@@ -1,0 +1,14 @@
+Int printInt(Int i){
+    return 1;
+}
+
+Int main(){
+    Int i;
+    i = 2 + 3 * 4 + 5 % 6;
+    Float f;
+    f = 2.3f + 4.2f * 3.0f - 10.0f / 2.4f;
+    Bool b;
+    b = i > 10;
+    printInt(i);
+    return 0;
+}
