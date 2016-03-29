@@ -29,9 +29,15 @@ rule tokenize = parse
     | "<=" { LE }
     | ">=" { GE }
     | "==" { EQ }
+    | "!=" { NE }
+    | "and" { AND }
+    | "or" { OR }
     | "def" { DEF }
     | "var" { VAR }
     | "ret" { RET }
+    | "if" { IF }
+    | "then" { THEN }
+    | "else" { ELSE }
     | "True" { BOOLLI true }
     | "False" { BOOLLI false }
     | eof { EOF }

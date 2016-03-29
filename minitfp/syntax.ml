@@ -16,6 +16,10 @@ type exp =
     | EGt of exp * exp
     | EGe of exp * exp
     | EEq of exp * exp
+    | ENe of exp * exp
+    | EIf of exp * exp * exp
+    | EApp of exp * exp
+    | EVar of string
 
 type state =
     | SDeclare of string
@@ -34,6 +38,7 @@ let rec string_of_exp = function
     | EInt i -> "EInt " ^ string_of_int i
     | EFloat f -> "EFloat " ^ string_of_float f
     | EBool b -> "EBool " ^ (if b then "true" else "false")
+    | EVar s -> "EVar " ^ s
     | EPlus(e1, e2) -> "EPlus(" ^ string_of_exp e1 ^ ", " ^ string_of_exp e2 ^ ")"
     | EMinus(e1, e2) -> "EMinus(" ^ string_of_exp e1 ^ ", " ^ string_of_exp e2 ^ ")"
     | EStar(e1, e2) -> "EStar(" ^ string_of_exp e1 ^ ", " ^ string_of_exp e2 ^ ")"
@@ -46,6 +51,9 @@ let rec string_of_exp = function
     | EGt(e1, e2) -> "EGt(" ^ string_of_exp e1 ^ ", " ^ string_of_exp e2 ^ ")"
     | EGe(e1, e2) -> "EGe(" ^ string_of_exp e1 ^ ", " ^ string_of_exp e2 ^ ")"
     | EEq(e1, e2) -> "EEq(" ^ string_of_exp e1 ^ ", " ^ string_of_exp e2 ^ ")"
+    | ENe(e1, e2) -> "ENe(" ^ string_of_exp e1 ^ ", " ^ string_of_exp e2 ^ ")"
+    | EIf(e1, e2, e3) -> "EIf(" ^ string_of_exp e1 ^ ", " ^ string_of_exp e2 ^ ", " ^ string_of_exp e3 ^ ")"
+    | EApp(e1, e2) -> "EApp(" ^ string_of_exp e1 ^ ", " ^ string_of_exp e2 ^ ")"
 
 let string_of_state = function
     | SDeclare s -> "SDeclare " ^ s
